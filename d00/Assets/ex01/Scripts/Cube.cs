@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float minSpeed;
+    public float maxSpeed;
+    public Vector3 startPos;
 
-    // Update is called once per frame
-    void Update()
+    private float speed;
+    private void Awake()
     {
-        
+        speed = Random.Range(minSpeed, maxSpeed);
+        transform.localPosition = startPos;
+    }
+    private void FixedUpdate()
+    {
+        transform.Translate(Vector3.down * speed * Time.fixedDeltaTime);
     }
 }

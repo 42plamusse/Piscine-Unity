@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject prefab;
+    public KeyCode keyCode;
+    public Transform bottomLine;
+    public Transform topLine;
 
-    // Update is called once per frame
-    void Update()
+    private GameObject cube;
+    private float timeBeforeNextSpawn;
+    private float precision;
+    private void Update()
     {
-        
+        if (!cube && timeBeforeNextSpawn <= 0)
+        {
+            cube = Instantiate(prefab);
+            timeBeforeNextSpawn = Random.Range(2.0f, 3.0f);
+        }
+        if (
+            cube &&
+            cube.transform.position.y < topLine.localPosition.y &&
+            (Input.GetKeyDown(keyCode) ||
+            cube.transform.position.y < bottomLine.localPosition.y - 1f))
+        {
+            Destroy(cube);
+            precision = cube.transform.position.y - bottomLine.localPosition.y;
+            if (precision >= 0) print("Precision: " + precision);
+            else print("Missed key: " + keyCode);
+        }
+        timeBeforeNextSpawn -= Time.deltaTime;
     }
 }
