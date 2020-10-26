@@ -136,7 +136,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 284457634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d78abff7efd409aba0be1b27fc9a53, type: 3}
+  m_Script: {fileID: 11500000, guid: 3568941ab20aa41bf9474f1a1b39bb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 587686000}
@@ -938,9 +938,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   club: {fileID: 284457635}
   hole: {fileID: 2015038110}
-  inertia: 20
+  inertia: 10
   shot: 0
   direction: {x: 0, y: 1, z: 0}
+  isGameOver: 0
 --- !u!1 &982522434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1181,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1e33222b56e99430a805ea042e348e2f, type: 3}
 --- !u!1001 &7684170584008136191
 PrefabInstance:
