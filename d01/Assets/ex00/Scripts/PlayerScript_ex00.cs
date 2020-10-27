@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript_ex00 : MonoBehaviour
 {
-    public CameraController cameraController;
+    public CameraController_ex00 cameraController;
     public KeyCode keycode;
     public float jumpForce;
     public float speed;
@@ -22,10 +22,17 @@ public class PlayerScript_ex00 : MonoBehaviour
     {
         if (Input.GetKeyDown(keycode))
             cameraController.changeFollowedPlayer(this);
-        if (cameraController.followedPlayer == this) selected = true;
-        else selected = false;
+        if (cameraController.followedPlayer == this) {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            selected = true;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX |
+                RigidbodyConstraints2D.FreezeRotation;
+            selected = false;
+        }
         if (!selected) return;
-        print(keycode);
         if (Input.GetKeyDown(KeyCode.Space)) jump = true;
         horizontalMove = Input.GetAxis("Horizontal");
 
@@ -37,10 +44,9 @@ public class PlayerScript_ex00 : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             jump = false;
         }
-        else
-        {
-            rb.MovePosition(transform.position +
-                transform.right * horizontalMove * speed * Time.fixedDeltaTime);
-        }
+        Vector3 velocity =
+            transform.right * horizontalMove * speed * Time.fixedDeltaTime;
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
     }
 }
