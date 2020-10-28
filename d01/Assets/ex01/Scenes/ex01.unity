@@ -528,11 +528,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 50
-  jumpForce: 15
+  jumpForce: 700
   speed: 200
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  extraHeightLayerMask: 0.05
 --- !u!212 &1087780338
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1114,11 +1115,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 51
-  jumpForce: 11.5
+  jumpForce: 560
   speed: 120
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  extraHeightLayerMask: 0.1
 --- !u!212 &1276555072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1309,11 +1311,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 49
-  jumpForce: 13
+  jumpForce: 650
   speed: 150
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  extraHeightLayerMask: 0.1
 --- !u!212 &1493312602
 SpriteRenderer:
   m_ObjectHideFlags: 0

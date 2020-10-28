@@ -9,6 +9,7 @@ public class PlayerScript_ex01 : MonoBehaviour
     public float jumpForce;
     public float speed;
     public LayerMask platformLayerMask;
+    public float extraHeightLayerMask;
 
     Rigidbody2D rb;
     BoxCollider2D boxCollider;
@@ -51,9 +52,14 @@ public class PlayerScript_ex01 : MonoBehaviour
         if (!selected) return;
         if (jump)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            jump = false;
+            Vector3 jumpVelocity =
+                Vector3.up * jumpForce * Time.fixedDeltaTime;
+            jumpVelocity.x = rb.velocity.x;
+            rb.velocity = jumpVelocity;
+            //rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+
         }
+        jump = false;
         Vector3 velocity =
             transform.right * horizontalMove * speed * Time.fixedDeltaTime;
         velocity.y = rb.velocity.y;
@@ -62,13 +68,12 @@ public class PlayerScript_ex01 : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float extraHeight = 0.1f;
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(
             boxCollider.bounds.center,
             boxCollider.bounds.size,
             0f,
             Vector2.down,
-            extraHeight,
+            extraHeightLayerMask,
             platformLayerMask
             );
         return raycastHit2D.collider != null;
