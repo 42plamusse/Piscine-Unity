@@ -71,8 +71,6 @@ public class PlayerScript_ex01 : MonoBehaviour
             extraHeight,
             platformLayerMask
             );
-        print(raycastHit2D.collider != null);
-        print(platformLayerMask);
         return raycastHit2D.collider != null;
     }
 }
