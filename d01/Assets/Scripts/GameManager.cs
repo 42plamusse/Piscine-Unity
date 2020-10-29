@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int m_PlayersNbr;
     public int m_PlayersReadyExit;
+    public string nextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if (m_PlayersReadyExit == m_PlayersNbr)
         {
-            print("YOU WIN !!!");
+            SceneManager.LoadScene(nextScene);
         }
     }
 
