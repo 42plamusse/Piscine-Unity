@@ -7,6 +7,7 @@ public class Unzoom : MonoBehaviour
     public float maxSize = 7f;
     public float speed = 1f;
     public Camera m_Camera;
+
     float initialSize;
     bool unzoom;
     CameraController cameraController;

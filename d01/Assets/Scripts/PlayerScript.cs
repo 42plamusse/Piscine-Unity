@@ -68,20 +68,21 @@ public class PlayerScript : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(
-            boxCollider.bounds.center + Vector3.down * extraHeightLayerMask,
+        RaycastHit2D[] raycastHit2Ds;
+        raycastHit2Ds = Physics2D.BoxCastAll(
+            boxCollider.bounds.center,
             boxCollider.bounds.size,
             0f,
-            Vector2.up,
-            0f,
+            Vector2.down,
+            extraHeightLayerMask,
             platformLayerMask
             );
-        Collider2D detectedCollider = raycastHit2D.collider;
-        if (detectedCollider != null)
+        if (raycastHit2Ds.Length != 0)
         {
-            if (IsColoredPlatform(raycastHit2D.collider))
+            Collider2D groundCollider = GetBottomCollider(raycastHit2Ds);
+            if (IsColoredPlatform(groundCollider))
             {
-                if (IsPlayerIgnoredByPlatform(detectedCollider)) return false;
+                if (IsPlayerIgnoredByPlatform(groundCollider)) return false;
                 else return true;
             }
             else
@@ -90,6 +91,22 @@ public class PlayerScript : MonoBehaviour
         }
         else
             return false;
+    }
+
+    private Collider2D GetBottomCollider(RaycastHit2D[] raycastHit2Ds)
+    {
+        Collider2D groundCollider = raycastHit2Ds[0].collider;
+        int i = 1;
+        while (i < raycastHit2Ds.Length)
+        {
+            if (groundCollider.bounds.center.y >
+                raycastHit2Ds[i].collider.bounds.center.y)
+            {
+                groundCollider = raycastHit2Ds[i].collider;
+            }
+            i++;
+        }
+        return groundCollider;
     }
 
     private bool IsColoredPlatform(Collider2D collider)
