@@ -21,8 +21,9 @@ public class CameraController : MonoBehaviour
         Vector3 newPos = followedPlayer.transform.position;
         transform.position = new Vector3(newPos.x, newPos.y + 1, transform.position.z);
         if (Input.GetKeyDown(KeyCode.Z))
-            toggleZoom = !toggleZoom;
-
+            toggleZoom = false;
+        if (Input.GetKeyUp(KeyCode.Z))
+            toggleZoom = true;
         if (toggleZoom)
 
         {

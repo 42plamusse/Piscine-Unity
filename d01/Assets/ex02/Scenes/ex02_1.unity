@@ -731,6 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 50
+  altKeyCode: 99
   jumpForce: 700
   speed: 220
   platformLayerMask:
@@ -1621,6 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 51
+  altKeyCode: 118
   jumpForce: 560
   speed: 150
   platformLayerMask:
@@ -1925,6 +1927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1270813272}
   keycode: 49
+  altKeyCode: 120
   jumpForce: 650
   speed: 170
   platformLayerMask:

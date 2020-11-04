@@ -6,6 +6,7 @@ public class PlayerScript_ex01 : MonoBehaviour
 {
     public CameraController_ex01 cameraController;
     public KeyCode keycode;
+    public KeyCode altKeyCode;
     public float jumpForce;
     public float speed;
     public LayerMask platformLayerMask;
@@ -24,7 +25,7 @@ public class PlayerScript_ex01 : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(keycode))
+        if (Input.GetKeyDown(keycode) || Input.GetKeyDown(altKeyCode))
             cameraController.changeFollowedPlayer(this);
         if (cameraController.followedPlayer == this)
         {

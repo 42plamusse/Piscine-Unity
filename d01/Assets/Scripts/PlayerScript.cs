@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public CameraController cameraController;
     public KeyCode keycode;
+    public KeyCode altKeyCode;
     public float jumpForce;
     public float speed;
     public LayerMask platformLayerMask;
@@ -24,11 +25,12 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(keycode))
+        if (Input.GetKeyDown(keycode) || Input.GetKeyDown(altKeyCode))
             cameraController.changeFollowedPlayer(this);
         if (cameraController.followedPlayer == this)
         {
             gameObject.layer = 9; //Player
+            gameObject.tag = "Player";
             rb.mass = 1;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             selected = true;
@@ -36,6 +38,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
             gameObject.layer = 8; // Platforms
+            gameObject.tag = "Platform";
             rb.mass = 10;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX |
                 RigidbodyConstraints2D.FreezeRotation;
@@ -124,5 +127,20 @@ public class PlayerScript : MonoBehaviour
             return true;
         }
         else return false;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = collision.transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = null;
+        }
     }
 }
