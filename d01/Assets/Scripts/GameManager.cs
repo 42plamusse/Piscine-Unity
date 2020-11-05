@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameOver();
         if (m_PlayersReadyExit == m_PlayersNbr)
         {
             SceneManager.LoadScene(nextScene);
@@ -29,5 +29,10 @@ public class GameManager : MonoBehaviour
     public void SetPlayersReadyExit(int newPlayersReadyExit)
     {
         m_PlayersReadyExit = newPlayersReadyExit;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
