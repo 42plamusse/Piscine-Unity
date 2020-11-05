@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
             GameOver();
-        if (m_PlayersReadyExit == m_PlayersNbr)
+        if (m_PlayersReadyExit == m_PlayersNbr || Input.GetKeyDown(KeyCode.N))
         {
             SceneManager.LoadScene(nextScene);
         }
