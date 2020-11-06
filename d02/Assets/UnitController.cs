@@ -5,11 +5,12 @@ using UnityEngine;
 public class UnitController : MonoBehaviour
 {
     public float speed;
+    public bool selected;
+    public Vector3 moveTowardsPos;
+    public AudioSource source;
 
-    Vector3 moveTowardsPos;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,8 @@ public class UnitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            moveTowardsPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            moveTowardsPos.z = 0;
-            Vector3 targetDir = moveTowardsPos - transform.position;
 
-            UpdateAnimator(targetDir);
-            source.Play();
-        }
-        if (transform.position != moveTowardsPos)
+        if (selected && transform.position != moveTowardsPos)
         {
             transform.position = Vector3.MoveTowards(transform.position,
                 moveTowardsPos, speed * Time.deltaTime);
@@ -40,7 +33,7 @@ public class UnitController : MonoBehaviour
             UpdateAnimator(Vector3.zero);
 
     }
-    void UpdateAnimator(Vector3 direction)
+    public void UpdateAnimator(Vector3 direction)
     {
         float angle = Vector3.Angle(direction, transform.right);
         int WalkX, WalkY = 0;
