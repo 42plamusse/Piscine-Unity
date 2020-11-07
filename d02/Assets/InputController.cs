@@ -17,14 +17,15 @@ public class InputController : MonoBehaviour
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
             if (!hit) return;
-            if (hit.collider.CompareTag("Footman"))
+            if (hit.collider.CompareTag("Human"))
             {
+                UnitController footman =
+                    hit.collider.gameObject.GetComponent<UnitController>();
+                if (footman == null) return;
                 if (!Input.GetKey(KeyCode.LeftControl))
                 {
                     footmen.Clear();
                 }
-                UnitController footman =
-                    hit.collider.gameObject.GetComponent<UnitController>();
                 if (footmen.IndexOf(footman) < 0)
                 {
                     footmen.Add(footman);

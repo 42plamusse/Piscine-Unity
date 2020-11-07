@@ -50,20 +50,20 @@ public class EnemyController : MonoBehaviour
             {
                 source.clip = hit;
                 source.Play();
-                EnemyController enemy =
-                    target.gameObject.GetComponent<EnemyController>();
+                UnitController enemy =
+                    target.gameObject.GetComponent<UnitController>();
                 Building building =
                     target.gameObject.GetComponent<Building>();
                 if (building)
                 {
                     building.hp -= hitDamage;
-                    print("Orc Building [" + building.hp +
+                    print(building.tag + " Building [" + building.hp +
                         "/" + building.initialHp + "]HP has been attacked.");
                 }
                 else if (enemy)
                 {
                     enemy.hp -= hitDamage;
-                    print("Orc Unit [" + enemy.hp +
+                    print( enemy.tag + " Unit [" + enemy.hp +
                         "/" + enemy.initialHp + "]HP has been attacked.");
                 }
                 elapsed = 0f;
@@ -106,7 +106,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (target &&
             collision == target.GetComponent<Collider2D>() &&

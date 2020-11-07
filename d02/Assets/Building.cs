@@ -23,26 +23,31 @@ public class Building : MonoBehaviour
         if (hp <= 0)
         {
             timeSinceDead += Time.deltaTime;
-            if (!playing)
-                GetComponent<AudioSource>().Play();
-            playing = true;
-            GetComponent<Collider2D>().enabled = false;
+            Death();
+        }
+    }
+    void Death()
+    {
+        if (isCityHall)
+        {
             GetComponent<SpriteRenderer>().enabled = false;
-            if (timeSinceDead >= 2.0f)
-            {
-                if (isCityHall)
-                {
-                    if (unitSpawner.gameObject.CompareTag("Orc"))
-                        print("The Human Team wins");
-                    else
-                        print("The Orc Team wins");
-                    Application.Quit();
-                }
-                else
-                    unitSpawner.spawnRate += 2.5f;
-                Destroy(gameObject);
+            if (unitSpawner.gameObject.CompareTag("Orc"))
+                print("The Human Team wins");
+            else
+                print("The Orc Team wins");
+            Time.timeScale = 0;
+        }
+        else
+            unitSpawner.spawnRate += 2.5f;
+        if (!playing)
+            GetComponent<AudioSource>().Play();
+        playing = true;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        if (timeSinceDead >= 2.0f)
+        {
+            Destroy(gameObject);
 
-            }
         }
     }
 }

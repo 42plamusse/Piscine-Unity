@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260581271046007577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,12 +103,14 @@ MonoBehaviour:
   moveTowardsPos: {x: 0, y: 0, z: 0}
   source: {fileID: 0}
   hit: {fileID: 8300000, guid: 74bb8aeecbf4a4d8da7f6d134f57fcab, type: 3}
+  deathClip: {fileID: 8300000, guid: d505e4dd43f044353a8df1223f5dfefd, type: 3}
   target: {fileID: 0}
   fighting: 0
   hitRate: 1
   hitDamage: 10
   hp: 100
   animator: {fileID: 0}
+  initialHp: 0
 --- !u!95 &1260581271046007570
 Animator:
   serializedVersion: 3

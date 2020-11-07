@@ -9,18 +9,23 @@ public class UnitController : MonoBehaviour
     public Vector3 moveTowardsPos;
     public AudioSource source;
     public AudioClip hit;
+    public AudioClip deathClip;
     public GameObject target;
     public bool fighting = false;
     public float hitRate;
     public float hitDamage;
     public float hp;
     public Animator animator;
+    public float initialHp;
 
     SpriteRenderer spriteRenderer;
     float elapsed = 0f;
+    bool playing = false;
+    float timeSinceDead;
     // Start is called before the first frame update
     void Start()
     {
+        initialHp = hp;
         moveTowardsPos = transform.position;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -69,9 +74,34 @@ public class UnitController : MonoBehaviour
 
         }
 
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0)
+        {
+            timeSinceDead += Time.deltaTime;
+            Death();
+        }
 
     }
+
+    void Death()
+    {
+        if (!playing)
+        {
+            source.clip = deathClip;
+            source.Play();
+        }
+        playing = true;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        selected = false;
+        fighting = false;
+        target = null;
+        if (timeSinceDead >= 1.0f)
+        {
+            Destroy(gameObject);
+
+        }
+    }
+
     public void UpdateAnimator(Vector3 direction)
     {
         float angle = Vector3.Angle(direction, transform.right);
@@ -103,7 +133,7 @@ public class UnitController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (target &&
             collision == target.GetComponent<Collider2D>() &&
