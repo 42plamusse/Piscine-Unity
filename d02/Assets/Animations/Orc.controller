@@ -213,7 +213,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Attack_Right
+  m_Name: Orc_Attack_Right
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -227,7 +227,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d24fb80335a3341e7b5dcf06cc5d31c6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 98f702cb8c1794b61ade9e5dc3a70863, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -290,7 +290,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Attack_Left
+  m_Name: Orc_Attack_Left
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -304,7 +304,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d24fb80335a3341e7b5dcf06cc5d31c6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 98f702cb8c1794b61ade9e5dc3a70863, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -372,7 +372,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Attack_Down
+  m_Name: Orc_Attack_Down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -386,7 +386,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a02bcd9863e0741c0afb3f34cc651d2c, type: 2}
+  m_Motion: {fileID: 7400000, guid: dc37bc20e3ec14af7b326bffed99bb84, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -534,7 +534,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Walk_Right
+  m_Name: Orc_Walk_Right
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -549,7 +549,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3fa2c1578f0614a31babf5a810481aa8, type: 2}
+  m_Motion: {fileID: 7400000, guid: c831edbd0af194307899cfd6a239b470, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -649,7 +649,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Idle
+  m_Name: Orc_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -666,7 +666,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cdebe7be20e6f4c69aac77b6f64a5856, type: 2}
+  m_Motion: {fileID: 7400000, guid: e6637e7c2972d4f51b4dd546db2e9a0a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -853,7 +853,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Walk_Top
+  m_Name: Orc_Walk_Top
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -868,7 +868,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2fc4401c082844e23a9c10313981a93a, type: 2}
+  m_Motion: {fileID: 7400000, guid: b8ea2640fd77a4a169d6e48b8c6608e8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -927,6 +927,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &5902376731890835249
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Orc_Idle 0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: e6637e7c2972d4f51b4dd546db2e9a0a, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &6038412105330331538
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -987,7 +1013,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Walk_Down
+  m_Name: Orc_Walk_Down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1002,7 +1028,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8183ce4b3739046578664ca4db40a7f1, type: 2}
+  m_Motion: {fileID: 7400000, guid: c7005a401439748429f8b17b5457aa2a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1015,7 +1041,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Attack_Up
+  m_Name: Orc_Attack_Up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1029,7 +1055,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dacab8312881c4a248d140eb4d29b2f6, type: 2}
+  m_Motion: {fileID: 7400000, guid: d080c9d4504f148bb893ae0d680e366f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1122,6 +1148,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2434139596513318369}
     m_Position: {x: 400, y: 300, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5902376731890835249}
+    m_Position: {x: 435, y: 365, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1139,7 +1168,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Footman_Walk_Left
+  m_Name: Orc_Walk_Left
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1154,7 +1183,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3fa2c1578f0614a31babf5a810481aa8, type: 2}
+  m_Motion: {fileID: 7400000, guid: c831edbd0af194307899cfd6a239b470, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

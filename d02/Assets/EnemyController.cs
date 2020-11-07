@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 moveTowardsPos;
     public AudioSource source;
     public AudioClip hit;
+    public AudioClip deathClip;
     public GameObject target;
     public bool fighting = false;
     public float hitRate;
@@ -16,7 +17,9 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
 
     public float initialHp;
+    bool playing = false;
     SpriteRenderer spriteRenderer;
+    float timeSinceDead;
     float elapsed = 0f;
     // Start is called before the first frame update
     void Start()
@@ -71,9 +74,34 @@ public class EnemyController : MonoBehaviour
 
         }
 
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0)
+        {
+            timeSinceDead += Time.deltaTime;
+            Death();
+        }
 
     }
+
+
+    void Death()
+    {
+        if (!playing)
+        {
+            source.clip = deathClip;
+            source.Play();
+        }
+        playing = true;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        fighting = false;
+        target = null;
+        if (timeSinceDead >= 1.0f)
+        {
+            Destroy(gameObject);
+
+        }
+    }
+
     public void UpdateAnimator(Vector3 direction)
     {
         if (animator == null) return;

@@ -50,17 +50,24 @@ public class InputController : MonoBehaviour
         bool soundPlayed = false;
         foreach (UnitController footman in footmen)
         {
-            if (!soundPlayed)
+            if (footman.hp <= 0)
             {
-                footman.source.clip = move;
-                footman.source.Play();
-                soundPlayed = true;
+                //footmen.Remove(footman);
             }
-            Vector3 targetDir = worldPos - footman.transform.position;
-            footman.UpdateAnimator(targetDir);
-            footman.moveTowardsPos = worldPos;
-            footman.target = null;
-            footman.fighting = false;
+            else
+            {
+                if (!soundPlayed)
+                {
+                    footman.source.clip = move;
+                    footman.source.Play();
+                    soundPlayed = true;
+                }
+                Vector3 targetDir = worldPos - footman.transform.position;
+                footman.UpdateAnimator(targetDir);
+                footman.moveTowardsPos = worldPos;
+                footman.target = null;
+                footman.fighting = false;
+            }
         }
     }
 

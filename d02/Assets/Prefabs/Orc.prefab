@@ -119,6 +119,7 @@ MonoBehaviour:
   moveTowardsPos: {x: 0, y: 0, z: 0}
   source: {fileID: 0}
   hit: {fileID: 8300000, guid: 74bb8aeecbf4a4d8da7f6d134f57fcab, type: 3}
+  deathClip: {fileID: 8300000, guid: ecc6df5e38e6b4fcb93c0ba729d9e42d, type: 3}
   target: {fileID: 0}
   fighting: 0
   hitRate: 1
@@ -253,7 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24838cec345464fb6992264758a2d89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cityHallAI: {fileID: 0}
   controller: {fileID: 0}
+  defending: 0
 --- !u!50 &-6168530202312459915
 Rigidbody2D:
   serializedVersion: 4

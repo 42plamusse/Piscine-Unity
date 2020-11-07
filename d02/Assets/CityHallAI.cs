@@ -59,14 +59,12 @@ public class CityHallAI : MonoBehaviour
         {
             lastAttacker = collision.gameObject;
             unitsAttacking++;
-            print(unitsAttacking);
         }
     }   
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Human"))
         {
-            print("EXIT");
             unitsAttacking--;
             lastDefender.GetComponent<EnemyAI>().Attack();
         }
