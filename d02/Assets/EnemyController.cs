@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public float speed;
-    public bool selected;
     public Vector3 moveTowardsPos;
     public AudioSource source;
     public AudioClip hit;
@@ -16,11 +15,13 @@ public class UnitController : MonoBehaviour
     public float hp;
     public Animator animator;
 
+    public float initialHp;
     SpriteRenderer spriteRenderer;
     float elapsed = 0f;
     // Start is called before the first frame update
     void Start()
     {
+        initialHp = hp;
         moveTowardsPos = transform.position;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,14 +32,15 @@ public class UnitController : MonoBehaviour
     void Update()
     {
 
-        if (selected && !fighting && transform.position != moveTowardsPos)
+        if (!fighting && transform.position != moveTowardsPos)
         {
             transform.position = Vector3.MoveTowards(transform.position,
                 moveTowardsPos, speed * Time.deltaTime);
         }
         else
             UpdateAnimator(Vector3.zero);
-        if (target) {
+        if (target)
+        {
             moveTowardsPos = target.transform.position;
             if (transform.position != moveTowardsPos)
                 UpdateAnimator(moveTowardsPos - transform.position);
@@ -74,6 +76,7 @@ public class UnitController : MonoBehaviour
     }
     public void UpdateAnimator(Vector3 direction)
     {
+        if (animator == null) return;
         float angle = Vector3.Angle(direction, transform.right);
         int WalkX, WalkY = 0;
         if (angle <= 45 && angle != 0)
@@ -107,7 +110,7 @@ public class UnitController : MonoBehaviour
     {
         if (target &&
             collision == target.GetComponent<Collider2D>() &&
-            collision.CompareTag("Orc"))
+            collision.CompareTag("Human"))
         {
             animator.SetBool("Attack", true);
             fighting = true;
@@ -115,7 +118,7 @@ public class UnitController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Orc"))
+        if (collision.CompareTag("Human"))
         {
             animator.SetBool("Attack", false);
             fighting = false;

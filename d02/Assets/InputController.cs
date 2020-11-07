@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    //public UnitController footman;
+    public AudioClip move;
     List<UnitController> footmen = new List<UnitController>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        //footmen.Add(footman);
-        //footman.selected = true;
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,22 +16,29 @@ public class InputController : MonoBehaviour
             mousePos.z = 10;
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
-            if (!hit.collider) return;
-            if (hit.collider.CompareTag("Footman")) {
-                if (!Input.GetKey(KeyCode.LeftControl)) {
+            if (!hit) return;
+            if (hit.collider.CompareTag("Footman"))
+            {
+                if (!Input.GetKey(KeyCode.LeftControl))
+                {
                     footmen.Clear();
                 }
                 UnitController footman =
                     hit.collider.gameObject.GetComponent<UnitController>();
-                if(footmen.IndexOf(footman) < 0)
+                if (footmen.IndexOf(footman) < 0)
                 {
                     footmen.Add(footman);
                     footman.selected = true;
+                    GetComponent<AudioSource>().Play();
                 }
             }
-            else if (hit.collider.CompareTag("Tile")){
+            else if (hit.collider.CompareTag("Orc"))
+                Attack(hit.collider.gameObject);
+            else if (hit.collider.CompareTag("Tile"))
+            {
                 MoveSelection(worldPos);
             }
+
         }
         if (Input.GetMouseButtonDown(1))
             footmen.Clear();
@@ -45,12 +46,29 @@ public class InputController : MonoBehaviour
 
     void MoveSelection(Vector3 worldPos)
     {
+        bool soundPlayed = false;
         foreach (UnitController footman in footmen)
         {
+            if (!soundPlayed)
+            {
+                footman.source.clip = move;
+                footman.source.Play();
+                soundPlayed = true;
+            }
             Vector3 targetDir = worldPos - footman.transform.position;
             footman.UpdateAnimator(targetDir);
-            footman.source.Play();
             footman.moveTowardsPos = worldPos;
+            footman.target = null;
+            footman.fighting = false;
+        }
+    }
+
+    void Attack(GameObject target) {
+        foreach (UnitController footman in footmen)
+        {
+            footman.fighting = false; // reset
+            footman.animator.SetBool("Attack", false); // reset
+            footman.target = target;
         }
     }
 }
