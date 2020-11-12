@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ennemyScript : MonoBehaviour {
 
-	[HideInInspector]public GameObject nextCheckpoint;
+	public GameObject nextCheckpoint;
 	[HideInInspector]public GameObject playerCore;
 	public int waveNumber;
 	public GameObject explosion;
@@ -27,7 +27,7 @@ public class ennemyScript : MonoBehaviour {
 	void Update() {
 		lookForward();
 		float step = speed * Time.deltaTime;
-		transform.position = Vector2.MoveTowards (transform.position, nextCheckpoint.transform.position, step);
+		transform.position = Vector2.MoveTowards(transform.position, nextCheckpoint.transform.position, step);
 		if (hp <= 0) {
 			gameManager.gm.playerEnergy += value;
 			gameManager.gm.score += score;
@@ -69,6 +69,8 @@ public class ennemyScript : MonoBehaviour {
 				}
 			}
 			Debug.Log ("Victoire !");
+			gameManager.gm.displayEndGameMenu(hasWon: true);
+
 		}
 	}
 }

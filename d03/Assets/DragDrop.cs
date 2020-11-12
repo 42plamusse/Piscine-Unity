@@ -30,7 +30,7 @@ public class DragDrop : MonoBehaviour,
 
     private void Update()
     {
-        if (towerCost > gameManager.playerEnergy)
+        if (towerCost > gameManager.gm.playerEnergy)
             spriteRenderer.color = Color.gray;
         else
             spriteRenderer.color = Color.white;
@@ -39,7 +39,7 @@ public class DragDrop : MonoBehaviour,
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (towerCost >
-gameManager.playerEnergy)
+            gameManager.gm.playerEnergy)
         {
             eventData.pointerDrag = null;
         }
@@ -73,10 +73,10 @@ gameManager.playerEnergy)
             }
         }
         if (canPlace && towerCost <=
-            gameManager.playerEnergy)
+            gameManager.gm.playerEnergy)
         {
             Instantiate(tower, emptySpot);
-            gameManager.playerEnergy -= towerCost;
+            gameManager.gm.playerEnergy -= towerCost;
             print("canPlace");
         }
         else
