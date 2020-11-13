@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,6 +18,7 @@ public class towerScript : MonoBehaviour {
 	public float range = 1;
 	public GameObject upgrade;
 	public GameObject downgrade;
+	public UpgradeMenu upgradeMenuScript;
 	
 	void Update () {
 		if (Time.time > nextShot) {
@@ -96,4 +98,13 @@ public class towerScript : MonoBehaviour {
 		newRocket.GetComponent<rocketScript> ().damage = damage;
 		newRocket.transform.localScale = new Vector2(-1, 1);
 	}
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+			UpgradeMenu.upgradeMenu.PopMenu(transform);
+        }
+    }
+
 }
