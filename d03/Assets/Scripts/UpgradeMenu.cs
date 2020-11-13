@@ -26,11 +26,17 @@ public class UpgradeMenu : MonoBehaviour
         selectedTower = tower;
         isPopped = true;
         menuInstance = Instantiate(radiusMenu, transform);
+        menuInstance.transform.Find("UpgradeButton").gameObject.SetActive(true);
         UpgradeRadius radiusScript = menuInstance.GetComponent<UpgradeRadius>();
         towerScript towerScript = tower.GetComponent<towerScript>();
-        towerScript upgradeTowerScript = towerScript.
-            upgrade.GetComponent<towerScript>();
-        radiusScript.energyCost.text = upgradeTowerScript.energy.ToString();
+        if (towerScript.upgrade != null)
+        {
+            towerScript upgradeTowerScript = towerScript.
+                upgrade.GetComponent<towerScript>();
+            radiusScript.energyCost.text = upgradeTowerScript.energy.ToString();
+        }
+        else
+            menuInstance.transform.Find("UpgradeButton").gameObject.SetActive(false);
         radiusScript.energyValue.text = (towerScript.energy / 2).ToString();
         RectTransform menuRectTransform =
             menuInstance.GetComponent<RectTransform>();

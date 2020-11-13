@@ -37,6 +37,7 @@ public class DragDrop : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        print(gameManager.gm.playerEnergy);
         if (towerCost >
             gameManager.gm.playerEnergy)
         {

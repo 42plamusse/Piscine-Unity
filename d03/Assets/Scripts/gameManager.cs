@@ -84,6 +84,7 @@ public class gameManager : MonoBehaviour {
 	//On pause le jeu en cas de game over
 	public void gameOver() {
 		Time.timeScale = 0;
+		UpgradeMenu.upgradeMenu.CloseMenu();
 		displayEndGameMenu(hasWon: false);
 		Debug.Log ("Game Over");
 	}
