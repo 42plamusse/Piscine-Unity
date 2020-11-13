@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour,
-    IPointerDownHandler,
     IBeginDragHandler,
     IEndDragHandler,
     IDragHandler
@@ -75,18 +74,9 @@ public class DragDrop : MonoBehaviour,
         if (canPlace && towerCost <=
             gameManager.gm.playerEnergy)
         {
-            Instantiate(tower, emptySpot);
+            Instantiate(tower, emptySpot.position, Quaternion.identity);
             gameManager.gm.playerEnergy -= towerCost;
-            print("canPlace");
         }
-        else
-            print("canNotPlace");
         rectTransform.anchoredPosition = initialPos;
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-
 }

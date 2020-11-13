@@ -99,12 +99,35 @@ public class towerScript : MonoBehaviour {
 		newRocket.transform.localScale = new Vector2(-1, 1);
 	}
 
-    private void OnMouseOver()
+	public bool CanUpgrade()
+    {
+		if (gameManager.gm.playerEnergy >=
+			upgrade.GetComponent<towerScript>().energy)
+			return true;
+		else
+			return false;
+    }
+	public void UpgradeSelf()
+    {
+		gameManager.gm.playerEnergy -=
+			upgrade.GetComponent<towerScript>().energy;
+		Instantiate(upgrade, transform.position, Quaternion.identity);
+		Destroy(gameObject);
+    }
+
+	public void DowngradeSelf()
+	{
+		gameManager.gm.playerEnergy += energy / 2;
+		if (downgrade != null)
+			Instantiate(downgrade, transform.position, Quaternion.identity);
+		Destroy(gameObject);
+	}
+
+	private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
-			UpgradeMenu.upgradeMenu.PopMenu(transform);
+			UpgradeMenu.upgradeMenu.PopMenu(gameObject);
         }
     }
-
 }
