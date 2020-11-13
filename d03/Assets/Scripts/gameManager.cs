@@ -27,6 +27,7 @@ public class gameManager : MonoBehaviour {
 	public GameObject pauseMenu;
 	public GameObject endGameMenu;
 	public string nextScene;
+	[HideInInspector] public bool ended = false;
 
 	public static gameManager gm;
 
@@ -91,6 +92,7 @@ public class gameManager : MonoBehaviour {
 
 	public void displayEndGameMenu(bool hasWon)
     {
+		ended = true;
 		EndGame endGameScript = endGameMenu.GetComponent<EndGame>();
 		endGameScript.score.text = score.ToString();
 		giveGrade();
